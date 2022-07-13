@@ -4,7 +4,8 @@ import requests
 app = Flask(__name__)
 api_url = "https://graph.facebook.com/v14.0/me/messages"
 v_token = "bipaktfmpea"
-acc_token = "EAAGf9UtML2gBAJFrfidEGGL37xJiegdiIzsgKRZAZCY5PwQPxZAO6T5KkK7ZANkCpk5a9FZCUS9GKyX4r3yyXy6zXLGAuzcqhafRhcyF1Fpcj1yKsPu4fC1v4GtJcFSQSngegAZB6chXEenDyBICdKIrg14Cg58yhnyssn7Ajee9q1t22ZAg1EU"
+with open("../token", 'r') as f:
+    acc_token = f.read()
 
 
 def get_bot_response(sender, message):
