@@ -12,6 +12,8 @@ session = {}
 
 def get_bot_response(sender, message):
     global session
+    if sender not in session:
+        return "시작하기라고 입력해주세요"
     if message == "시작하기":
         session[sender] = {"session": 1, "color": None}
         return "꽃 색은 무슨색입니까? (흰색, 분홍색, 녹색, 주황색, 보라색, 노란색, 갈색 중 택 1)"
