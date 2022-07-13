@@ -8,7 +8,8 @@ acc_token = "EAAGf9UtML2gBAJFrfidEGGL37xJiegdiIzsgKRZAZCY5PwQPxZAO6T5KkK7ZANkCpk
 
 
 def get_bot_response(sender, message):
-    pass
+    if message == "야":
+        return "네"
 
 
 def send_message(recipient_id, text):
