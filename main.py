@@ -4,7 +4,7 @@ import requests
 app = Flask(__name__)
 api_url = "https://graph.facebook.com/v14.0/me/messages"
 v_token = "bipaktfmpea"
-with open("/workspace/plant_encyclopedia/", 'r') as f:
+with open("/workspace/plant_encyclopedia/token_acc", 'r') as f:
     acc_token = f.read()
 
 
