@@ -27,4 +27,4 @@ response = requests.post(
         params=auth,
         json=payload
     )
-print(response)
+print(response.te)
