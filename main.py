@@ -28,18 +28,22 @@ def get_bot_response(sender, message):
         elif "주황색" in message:
             session[sender]["color"] = 4
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "1959367567785890")
             return "그 꽃은 인도 칸나입니다."
         elif "보라색" in message:
             session[sender]["color"] = 5
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "452060200075041")
             return "그 꽃은 순비기나무입니다."
         elif "노란색" in message:
             session[sender]["color"] = 6
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "2189293031243890")
             return "그 꽃은 인동덩굴입니다."
         elif "갈색" in message:
             session[sender]["color"] = 7
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "1065736257402776")
             return "그 꽃은 밀사초입니다."
         else:
             return "저 중에 다시 선택해 주세요"
@@ -48,21 +52,27 @@ def get_bot_response(sender, message):
     elif session[sender]["session"] == 1 and session[sender]["color"] is not None:
         if session[sender]["color"] == 1 and ("무리" in message):
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "782544996110673")
             return "그 꽃은 사상자입니다."
         elif session[sender]["color"] == 1 and ("일렬" in message):
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "612363350084846")
             return "그 꽃은 참새피입니다."
         elif session[sender]["color"] == 2 and ("물방울" in message):
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "374873321242833")
             return "그 꽃은 분꽃입니다."
         elif session[sender]["color"] == 2 and ("길쭉함" in message):
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "606634907723245")
             return "그 꽃은 엉겅퀴입니다."
         elif session[sender]["color"] == 3 and ("단풍" in message):
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "570251074694807")
             return "그 꽃은 환삼덩굴입니다."
         elif session[sender]["color"] == 3 and ("가늘고 길쭉" in message):
             session[sender] = {"session": None, "color": None}
+            send_image(sender, "372052928398135")
             return "그 꽃은 가는갯는쟁이입니다."
     return "다시 대답해주세요"
 
@@ -79,6 +89,35 @@ def send_message(recipient_id, text):
         'notification_type': 'regular',
         'messaging_type': 'MESSAGE_TAG',
         "tag": "CONFIRMED_EVENT_UPDATE"
+    }
+
+    auth = {
+        'access_token': acc_token
+    }
+
+    response = requests.post(
+        api_url,
+        params=auth,
+        json=payload
+    )
+    return response.json()
+
+
+def send_image(recipient_id, id):
+    payload = {
+        'message': {
+            "attachment": {
+                "type": "image",
+                "payload": {
+                    'attachment_id': id
+                },
+            }
+        },
+        'recipient': {
+            'id': recipient_id
+        },
+        'notification_type': 'regular',
+        'messaging_type': 'RESPONSE'
     }
 
     auth = {
