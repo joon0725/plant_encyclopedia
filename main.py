@@ -12,12 +12,12 @@ session = {}
 
 def get_bot_response(sender, message):
     global session
-    if sender not in session:
-        return "시작하기라고 입력해주세요"
     if message == "시작하기":
         session[sender] = {"session": 1, "color": None}
         return "꽃 색은 무슨색입니까? (흰색, 분홍색, 녹색, 주황색, 보라색, 노란색, 갈색 중 택 1)"
-    if session[sender]["session"] == 1 and session[sender]["color"] is None:
+    elif sender not in session:
+        return "시작하기라고 입력해주세요"
+    elif session[sender]["session"] == 1 and session[sender]["color"] is None:
         if "흰색" in message:
             session[sender]["color"] = 1
             return "꽃이 핀 형태는 어떠한가요? (무리, 일렬)"
@@ -44,7 +44,7 @@ def get_bot_response(sender, message):
         else:
             return "저 중에 다시 선택해 주세요"
         return "잎 모양은 어떠한가요? (물방울, 단풍, 길쭉함, 가늘고 길쭉 중 택 1)"
-    if session[sender]["session"] == 1 and session[sender]["color"] is not None:
+    elif session[sender]["session"] == 1 and session[sender]["color"] is not None:
         session[sender] = {"session": None, "color": None}
         if session[sender]["color"] == 1 and "무리" in message:
             return "그 꽃은 사상자입니다."
@@ -95,7 +95,6 @@ def verify_webhook(req):
 
 def respond(sender, message):  # 대답하는코드
     response = get_bot_response(sender, message)
-    print(response)
     payload = {
         'message': {
             'text': response
