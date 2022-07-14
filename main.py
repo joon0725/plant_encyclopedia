@@ -44,19 +44,20 @@ def get_bot_response(sender, message):
         else:
             return "저 중에 다시 선택해 주세요"
         return "잎 모양은 어떠한가요? (물방울, 단풍, 길쭉함, 가늘고 길쭉 중 택 1)"
+
     elif session[sender]["session"] == 1 and session[sender]["color"] is not None:
         session[sender] = {"session": None, "color": None}
-        if session[sender]["color"] == 1 and "무리" in message:
+        if session[sender]["color"] == 1 and ("무리" in message):
             return "그 꽃은 사상자입니다."
-        elif session[sender]["color"] == 1 and "일렬" in message:
+        elif session[sender]["color"] == 1 and ("일렬" in message):
             return "그 꽃은 참새피입니다."
-        elif session[sender]["color"] == 2 and "물방울" in message:
+        elif session[sender]["color"] == 2 and ("물방울" in message):
             return "그 꽃은 분꽃입니다."
-        elif session[sender]["color"] == 2 and "길쭉함" in message:
+        elif session[sender]["color"] == 2 and ("길쭉함" in message):
             return "그 꽃은 엉겅퀴입니다."
-        elif session[sender]["color"] == 3 and "단풍" in message:
+        elif session[sender]["color"] == 3 and ("단풍" in message):
             return "그 꽃은 환삼덩굴입니다."
-        elif session[sender]["color"] == 3 and "가늘고 길쭉" in message:
+        elif session[sender]["color"] == 3 and ("가늘고 길쭉" in message):
             return "그 꽃은 가는갯는쟁이입니다."
 
 
